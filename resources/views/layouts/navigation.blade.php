@@ -18,9 +18,9 @@
                     <x-nav-link :href="route('products.index')" :active="request()->routeIs('products.index')">
                         {{ __('☕️ Products') }}
                     </x-nav-link>
-{{--                    <x-nav-link :href="route('shipping.partners')" :active="request()->routeIs('shipping.partners')">--}}
-{{--                        {{ __('Shipping Partners 🚚') }}--}}
-{{--                    </x-nav-link>--}}
+                  <x-nav-link :href="route('shipping-cost.index')" :active="request()->routeIs('shipping-cost.index')">
+                        {{ __('Shipping Partners 🚚') }}
+                    </x-nav-link>
                 </div>
             </div>
 

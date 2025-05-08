@@ -19,6 +19,14 @@ class DatabaseSeeder extends Seeder
             'email' => 'sales@coffee.shop',
         ]);
 
-        $this->call(ProductSeeder::class);
+        $this->call(
+            ProductSeeder::class,
+            
+    );
+
+    $this->call(
+        
+        ShippingCostSeeder::class,
+);
     }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShippingCostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +24,12 @@ Route::redirect('/dashboard', '/sales');
 Route::get('/sales', function () {
     return view('coffee_sales');
 })->middleware(['auth'])->name('coffee.sales');
+ 
 
-Route::get('/shipping-partners', function () {
-    return view('shipping_partners');
-})->middleware(['auth'])->name('shipping.partners');
+Route::get('/shipping-cost', [ShippingCostController::class, 'index'])->name('shipping-cost.index')->middleware(['auth']);
+Route::post('/shipping-cost', [ShippingCostController::class, 'update'])->name('shipping-cost.update')->middleware(['auth']);
+ 
+
 
 
 Route::middleware(['auth'])->group(function () {
