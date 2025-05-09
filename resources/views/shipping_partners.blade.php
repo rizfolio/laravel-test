@@ -28,7 +28,7 @@
                         </div>
 
                         <div>
-                            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded">Save Shipping Cost</button>
+                            <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Save Shipping Cost</button>
                         </div>
                     </form>
                 </div>

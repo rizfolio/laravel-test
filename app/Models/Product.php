@@ -10,4 +10,9 @@ class Product extends Model
     use HasFactory;
     protected $fillable = ['name', 'unit_cost', 'commission'];
 
+    public function sales()
+    {
+        return $this->hasMany(Sale::class);
+    }
+
 }

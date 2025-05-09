@@ -17,19 +17,19 @@
 
                 <div class="flex justify-between mb-4">
                     <h3 class="text-lg font-semibold">Product List</h3>
-                    <a href="{{ route('products.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                {{--   <a href="{{ route('products.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150 ml-3">
                         + Add Product
-                    </a>
+                    </a> --}}   
                 </div>
 
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white text-sm border">
-                        <thead class="bg-gray-100">
+                        <thead class="bg-gray-100 text-left">
                             <tr>
                                 <th class="px-4 py-2 border">Name</th>
                                 <th class="px-4 py-2 border">Unit Cost</th>
                                 <th class="px-4 py-2 border">Commission</th>
-                                <th class="px-4 py-2 border">Actions</th>
+                                {{--   <th class="px-4 py-2 border">Actions</th> --}}   
                             </tr>
                         </thead>
                         <tbody>
@@ -38,14 +38,14 @@
                                     <td class="px-4 py-2 border">{{ $product->name }}</td>
                                     <td class="px-4 py-2 border">&pound;{{ number_format($product->unit_cost, 2) }}</td>
                                     <td class="px-4 py-2 border">{{ $product->commission }}</td>
-                                    <td class="px-4 py-2 border space-x-2">
+                                    {{--      <td class="px-4 py-2 border space-x-2">
                                         <a href="{{ route('products.show', $product) }}" class="text-blue-600 hover:underline">View</a>
                                         <a href="{{ route('products.edit', $product) }}" class="text-yellow-600 hover:underline">Edit</a>
                                         <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
                                             <button class="text-red-600 hover:underline" onclick="return confirm('Delete this product?')">Delete</button>
                                         </form>
-                                    </td>
+                                    </td> --}}   
                                 </tr>
                             @empty
                                 <tr>
