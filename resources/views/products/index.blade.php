@@ -29,7 +29,7 @@
                                 <th class="px-4 py-2 border">Name</th>
                                 <th class="px-4 py-2 border">Unit Cost</th>
                                 <th class="px-4 py-2 border">Commission</th>
-                                {{--   <th class="px-4 py-2 border">Actions</th> --}}   
+                                <th class="px-4 py-2 border">Actions</th>    
                             </tr>
                         </thead>
                         <tbody>
@@ -38,14 +38,14 @@
                                     <td class="px-4 py-2 border">{{ $product->name }}</td>
                                     <td class="px-4 py-2 border">&pound;{{ number_format($product->unit_cost, 2) }}</td>
                                     <td class="px-4 py-2 border">{{ $product->commission }}</td>
-                                    {{--      <td class="px-4 py-2 border space-x-2">
+                                       <td class="px-4 py-2 border space-x-2">
                                         <a href="{{ route('products.show', $product) }}" class="text-blue-600 hover:underline">View</a>
                                         <a href="{{ route('products.edit', $product) }}" class="text-yellow-600 hover:underline">Edit</a>
-                                        <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline">
+                                        {{--     <form action="{{ route('products.destroy', $product) }}" method="POST" class="inline">
                                             @csrf @method('DELETE')
                                             <button class="text-red-600 hover:underline" onclick="return confirm('Delete this product?')">Delete</button>
-                                        </form>
-                                    </td> --}}   
+                                        </form> --}}  
+                                    </td>  
                                 </tr>
                             @empty
                                 <tr>

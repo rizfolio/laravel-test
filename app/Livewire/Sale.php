@@ -27,30 +27,39 @@ class Sale extends Component
         $this->products = Product::all();
 
         if ($this->products->isNotEmpty()) {
-            $this->product_id = $this->products->first()->id;
             $this->product_name = $this->products->first()->name;
+            $this->product_id = $this->products->first()->id;
             $this->commission = $this->products->first()->commission;
-            $this->calculateSellingPrice();
         }
 
         $this->shipping_cost = ShippingCost::first()?->shipping_cost ?? 0;
         $this->recentSales = SaleModel::latest()->get();
-
-        logger('Mounted: ' . $this->selling_price);
 
     }
 
     public function updated($field)
     {
      
-        if (in_array($field, [ 'unit_cost', 'quantity'])) {
+        if (in_array($field, [ 'product_id', 'unit_cost', 'quantity'])) {
             $this->calculateSellingPrice();
         }
 
     }
 
+
+    public function updatedProductId($value)
+    {
+        $product = Product::find($value);
+        if ($product) {
+            $this->product_name = $product->name;
+            $this->commission = $product->commission;
+            $this->calculateSellingPrice();
+        }
+    }
+
     public function calculateSellingPrice()
     {
+        
         if (intval($this->quantity) > 0  && floatval($this->unit_cost) > 0) {
             $cost = intval($this->quantity) * floatval($this->unit_cost);
             $base = $cost  / (1 - $this->commission);

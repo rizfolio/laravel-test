@@ -14,10 +14,19 @@
         <div class="bg-white shadow rounded p-6">
             <form wire:submit.prevent="save">
                 <div class="grid grid-cols-6 gap-4 items-end">
-           
+                    <!-- Product Dropdown -->
+                    <div class="col-span-1 none">
+                        <label class="block text-sm">Product</label>
+                        <select wire:model.live="product_id" class="w-full border-gray-300 rounded">
+                            @foreach ($products as $product)
+                                <option value="{{ $product->id }}">{{ $product->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <!-- Quantity -->
                     <div class="col-span-1">
-                        <label class="block text-sm">Qty</label>
+                        <label class="block text-sm">Quantity</label>
                         <input type="number" wire:model.live="quantity"  value="" class="w-full border-gray-300 rounded">
                     </div>
 
@@ -67,21 +76,22 @@
                 <table class="w-full table-auto border text-sm border-sky-500/100">
                     <thead class="bg-sky-500/100 text-white  text-lg">
                         <tr>
-                       
+                            <th class="px-4 py-2">Product</th>
                             <th class="px-4 py-2 text-left ">Quantity</th>
                             <th class="px-4 py-2 text-left">Unit Cost</th>
                             <th class="px-4 py-2 text-left">Selling Price</th>
+                            <th class="px-4 py-2 text-left">Sold At</th>
                              
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($recentSales as $sale)
                             <tr class=" border-b border-sky-500/100">
-                                
+                                <td class="px-4 py-2">{{ $sale->product->name }}</td>
                                 <td class="px-4 py-2">{{ $sale->quantity }}</td>
                                 <td class="px-4 py-2 bg-sky-500/50">&pound;{{ number_format($sale->unit_cost, 2) }}</td>
                                 <td class="px-4 py-2">&pound;{{ number_format($sale->selling_price, 2) }}</td>
-                              
+                                <td class="px-4 py-2">{{ $sale->sold_at }}</td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -90,6 +100,10 @@
         </div>
     </div>
  
+
+
+ 
+
  <!-- Confirmation Modal -->
  <div
     x-data="{
@@ -112,7 +126,7 @@
                     <p><strong>Product:</strong> <span x-text="productName"></span></p>
                     <p><strong>Quantity:</strong> <span x-text="quantity"></span></p>
                     <p><strong>Unit Cost:</strong> &pound;<span x-text="unitCost"></span></p>
-                    <p><strong>Commission:</strong> <span x-text="(commission * 100).toFixed(2) + '%'"></span></p>
+                    <p><strong>Commission:</strong> <span x-text="(commission * 100).toFixed(0) + '%'"></span></p>
                     <p><strong>Shipping Cost:</strong> &pound;<span x-text="shippingCost"></span></p>
                     <p><strong>Selling Price:</strong> &pound;<span x-text="sellingPrice"></span></p>
                 </div>
